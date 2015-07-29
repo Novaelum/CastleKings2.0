@@ -248,7 +248,7 @@ public class Player : Character {
     private void Spawn()
     {
         m_dead = false;
-        Debug.Log("IT WORKED!");
+        
     }
 
     private void DashEnded()
