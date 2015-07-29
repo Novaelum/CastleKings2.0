@@ -1,0 +1,1837 @@
+fileFormatVersion: 2
+guid: ad0cfc483f0bd474e8b1fcee56470f41
+timeCreated: 1437875839
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PlayerBlond_0
+    21300002: PlayerBlond_1
+    21300004: PlayerBlond_2
+    21300006: PlayerBlond_3
+    21300008: PlayerBlond_4
+    21300010: PlayerBlond_5
+    21300012: PlayerBlond_6
+    21300014: PlayerBlond_7
+    21300016: PlayerBlond_8
+    21300018: PlayerBlond_9
+    21300020: PlayerBlond_10
+    21300022: PlayerBlond_11
+    21300024: PlayerBlond_12
+    21300026: PlayerBlond_13
+    21300028: PlayerBlond_14
+    21300030: PlayerBlond_15
+    21300032: PlayerBlond_16
+    21300034: PlayerBlond_17
+    21300036: PlayerBlond_18
+    21300038: PlayerBlond_19
+    21300040: PlayerBlond_20
+    21300042: PlayerBlond_21
+    21300044: PlayerBlond_22
+    21300046: PlayerBlond_23
+    21300048: PlayerBlond_24
+    21300050: PlayerBlond_25
+    21300052: PlayerBlond_26
+    21300054: PlayerBlond_27
+    21300056: PlayerBlond_28
+    21300058: PlayerBlond_29
+    21300060: PlayerBlond_30
+    21300062: PlayerBlond_31
+    21300064: PlayerBlond_32
+    21300066: PlayerBlond_33
+    21300068: PlayerBlond_34
+    21300070: PlayerBlond_35
+    21300072: PlayerBlond_36
+    21300074: PlayerBlond_37
+    21300076: PlayerBlond_38
+    21300078: PlayerBlond_39
+    21300080: PlayerBlond_40
+    21300082: PlayerBlond_41
+    21300084: PlayerBlond_42
+    21300086: PlayerBlond_43
+    21300088: PlayerBlond_44
+    21300090: PlayerBlond_45
+    21300092: PlayerBlond_46
+    21300094: PlayerBlond_47
+    21300096: PlayerBlond_48
+    21300098: PlayerBlond_49
+    21300100: PlayerBlond_50
+    21300102: PlayerBlond_51
+    21300104: PlayerBlond_52
+    21300106: PlayerBlond_53
+    21300108: PlayerBlond_54
+    21300110: PlayerBlond_55
+    21300112: PlayerBlond_56
+    21300114: PlayerBlond_57
+    21300116: PlayerBlond_58
+    21300118: PlayerBlond_59
+    21300120: PlayerBlond_60
+    21300122: PlayerBlond_61
+    21300124: PlayerBlond_62
+    21300126: PlayerBlond_63
+    21300128: PlayerBlond_64
+    21300130: PlayerBlond_65
+    21300132: PlayerBlond_66
+    21300134: PlayerBlond_67
+    21300136: PlayerBlond_68
+    21300138: PlayerBlond_69
+    21300140: PlayerBlond_70
+    21300142: PlayerBlond_71
+    21300144: PlayerBlond_72
+    21300146: PlayerBlond_73
+    21300148: PlayerBlond_74
+    21300150: PlayerBlond_75
+    21300152: PlayerBlond_76
+    21300154: PlayerBlond_77
+    21300156: PlayerBlond_78
+    21300158: PlayerBlond_79
+    21300160: PlayerBlond_80
+    21300162: PlayerBlond_81
+    21300164: PlayerBlond_82
+    21300166: PlayerBlond_83
+    21300168: PlayerBlond_84
+    21300170: PlayerBlond_85
+    21300172: PlayerBlond_86
+    21300174: PlayerBlond_87
+    21300176: PlayerBlond_88
+    21300178: PlayerBlond_89
+    21300180: PlayerBlond_90
+    21300182: PlayerBlond_91
+    21300184: PlayerBlond_92
+    21300186: PlayerBlond_93
+    21300188: PlayerBlond_94
+    21300190: PlayerBlond_95
+    21300192: PlayerBlond_96
+    21300194: PlayerBlond_97
+    21300196: PlayerBlond_98
+    21300198: PlayerBlond_99
+    21300200: PlayerBlond_100
+    21300202: PlayerBlond_101
+    21300204: PlayerBlond_102
+    21300206: PlayerBlond_103
+    21300208: PlayerBlond_104
+    21300210: PlayerBlond_105
+    21300212: PlayerBlond_106
+    21300214: PlayerBlond_107
+    21300216: PlayerBlond_108
+    21300218: PlayerBlond_109
+    21300220: PlayerBlond_110
+    21300222: PlayerBlond_111
+    21300224: PlayerBlond_112
+    21300226: PlayerBlond_113
+    21300228: PlayerBlond_114
+    21300230: PlayerBlond_115
+    21300232: PlayerBlond_116
+    21300234: PlayerBlond_117
+    21300236: PlayerBlond_118
+    21300238: PlayerBlond_119
+    21300240: PlayerBlond_120
+    21300242: PlayerBlond_121
+    21300244: PlayerBlond_122
+    21300246: PlayerBlond_123
+    21300248: PlayerBlond_124
+    21300250: PlayerBlond_125
+    21300252: PlayerBlond_126
+    21300254: PlayerBlond_127
+    21300256: PlayerBlond_128
+    21300258: PlayerBlond_129
+    21300260: PlayerBlond_130
+    21300262: PlayerBlond_131
+    21300264: PlayerBlond_132
+    21300266: PlayerBlond_133
+    21300268: PlayerBlond_134
+    21300270: PlayerBlond_135
+    21300272: PlayerBlond_136
+    21300274: PlayerBlond_137
+    21300276: PlayerBlond_138
+    21300278: PlayerBlond_139
+    21300280: PlayerBlond_140
+    21300282: PlayerBlond_141
+    21300284: PlayerBlond_142
+    21300286: PlayerBlond_143
+    21300288: PlayerBlond_144
+    21300290: PlayerBlond_145
+    21300292: PlayerBlond_146
+    21300294: PlayerBlond_147
+    21300296: PlayerBlond_148
+    21300298: PlayerBlond_149
+    21300300: PlayerBlond_150
+    21300302: PlayerBlond_151
+    21300304: PlayerBlond_152
+    21300306: PlayerBlond_153
+    21300308: PlayerBlond_154
+    21300310: PlayerBlond_155
+    21300312: PlayerBlond_156
+    21300314: PlayerBlond_157
+    21300316: PlayerBlond_158
+    21300318: PlayerBlond_159
+    21300320: PlayerBlond_160
+    21300322: PlayerBlond_161
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 32
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PlayerBlond_0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 2049
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 2049
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_2
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 2049
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_3
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 2049
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_4
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 2049
+        width: 52
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_5
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 2049
+        width: 50
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_6
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 2049
+        width: 38
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1984
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_8
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1984
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_9
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 1984
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_10
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1984
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_11
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1984
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_12
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1984
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_13
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 1984
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_14
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1919
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_15
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1919
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_16
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1919
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_17
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 1919
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_18
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 1919
+        width: 52
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_19
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 1919
+        width: 50
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_20
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1919
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_21
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1856
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_22
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1856
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_23
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1856
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_24
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1856
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_25
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 1856
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_26
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1856
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_27
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1856
+        width: 30
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_28
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1793
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_29
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1791
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_30
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1791
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_31
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1791
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_32
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1791
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_33
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1791
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_34
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1791
+        width: 28
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_35
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 1791
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_36
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1728
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_37
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1728
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_38
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1728
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_39
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 1727
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_40
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1727
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_41
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 1727
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_42
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 1727
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_43
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 1727
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_44
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1663
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_45
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1664
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_46
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1664
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_47
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1664
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_48
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1664
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_49
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1664
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_50
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1664
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_51
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 1664
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_52
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1600
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_53
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1600
+        width: 28
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_54
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1600
+        width: 29
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_55
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1599
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_56
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 1599
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_57
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 1599
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_58
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 1599
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_59
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 1599
+        width: 28
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_60
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1537
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_61
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1536
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_62
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1536
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_63
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1537
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_64
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1536
+        width: 32
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_65
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1535
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_66
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 1472
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_67
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1473
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_68
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1472
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_69
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1472
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_70
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1472
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_71
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 1472
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_72
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1407
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_73
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1408
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_74
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 1407
+        width: 33
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_75
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 1407
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_76
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 1408
+        width: 32
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_77
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1408
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_78
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1343
+        width: 29
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_79
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 1344
+        width: 27
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_80
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 1343
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_81
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 1343
+        width: 30
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_82
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1343
+        width: 26
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_83
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1343
+        width: 25
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_84
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1281
+        width: 32
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_85
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1280
+        width: 31
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_86
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1280
+        width: 30
+        height: 49
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_87
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 1280
+        width: 31
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_88
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 1280
+        width: 38
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_89
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1280
+        width: 41
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_90
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 1216
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_91
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 1215
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_92
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 1215
+        width: 27
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_93
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 1215
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_94
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 1215
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_95
+      rect:
+        serializedVersion: 2
+        x: 330
+        y: 1215
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_96
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1151
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_97
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 1151
+        width: 30
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_98
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 1151
+        width: 31
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_99
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1152
+        width: 29
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_100
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1152
+        width: 37
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_101
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 1152
+        width: 41
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_102
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1088
+        width: 26
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_103
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1087
+        width: 28
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_104
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1087
+        width: 27
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_105
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1087
+        width: 36
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_106
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1087
+        width: 38
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_107
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1087
+        width: 35
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_108
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1025
+        width: 36
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_109
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1025
+        width: 28
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_110
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 1025
+        width: 29
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_111
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 1025
+        width: 31
+        height: 60
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_112
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1025
+        width: 31
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_113
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 1025
+        width: 28
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_114
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 962
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_115
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 961
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_116
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 961
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_117
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 961
+        width: 39
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_118
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 961
+        width: 38
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_119
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 961
+        width: 36
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_120
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 898
+        width: 38
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_121
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 897
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_122
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 897
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_123
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 897
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_124
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 897
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_125
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 897
+        width: 29
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_126
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 834
+        width: 39
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_127
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 833
+        width: 37
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_128
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 833
+        width: 37
+        height: 58
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_129
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 833
+        width: 39
+        height: 59
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_130
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 833
+        width: 38
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_131
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 833
+        width: 36
+        height: 56
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_132
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 767
+        width: 32
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_133
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 767
+        width: 33
+        height: 52
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_134
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 767
+        width: 32
+        height: 46
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_135
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 770
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_136
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 770
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_137
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 767
+        width: 36
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_138
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 641
+        width: 41
+        height: 49
+      alignment: 9
+      pivot: {x: .622469664, y: .493832946}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_139
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 640
+        width: 49
+        height: 49
+      alignment: 9
+      pivot: {x: .69748795, y: .509841621}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_140
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 640
+        width: 47
+        height: 49
+      alignment: 9
+      pivot: {x: .658296645, y: .513950884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_141
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 640
+        width: 60
+        height: 50
+      alignment: 9
+      pivot: {x: .750414014, y: .500001192}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_142
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 640
+        width: 83
+        height: 69
+      alignment: 9
+      pivot: {x: .557567894, y: .364644378}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_143
+      rect:
+        serializedVersion: 2
+        x: 1041
+        y: 640
+        width: 79
+        height: 66
+      alignment: 9
+      pivot: {x: .220199391, y: .378312558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_144
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 447
+        width: 59
+        height: 53
+      alignment: 9
+      pivot: {x: .768363297, y: .0714428052}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_145
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 447
+        width: 34
+        height: 51
+      alignment: 9
+      pivot: {x: .671638966, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_146
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 447
+        width: 38
+        height: 53
+      alignment: 9
+      pivot: {x: .436279297, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_147
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 447
+        width: 59
+        height: 53
+      alignment: 9
+      pivot: {x: .477611482, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_148
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 447
+        width: 95
+        height: 53
+      alignment: 9
+      pivot: {x: .879061103, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_149
+      rect:
+        serializedVersion: 2
+        x: 976
+        y: 447
+        width: 93
+        height: 53
+      alignment: 9
+      pivot: {x: .871675253, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_150
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 254
+        width: 41
+        height: 54
+      alignment: 9
+      pivot: {x: .625139177, y: .486426473}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_151
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 255
+        width: 49
+        height: 53
+      alignment: 9
+      pivot: {x: .713235676, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_152
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 255
+        width: 48
+        height: 51
+      alignment: 9
+      pivot: {x: .665566146, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_153
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 256
+        width: 57
+        height: 51
+      alignment: 9
+      pivot: {x: .752705872, y: .490259498}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_154
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 238
+        width: 83
+        height: 70
+      alignment: 9
+      pivot: {x: .571811914, y: .618730366}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_155
+      rect:
+        serializedVersion: 2
+        x: 1042
+        y: 241
+        width: 78
+        height: 67
+      alignment: 9
+      pivot: {x: .223438755, y: .599844873}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_156
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 63
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_157
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 63
+        width: 34
+        height: 51
+      alignment: 9
+      pivot: {x: .310106158, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_158
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 63
+        width: 37
+        height: 53
+      alignment: 9
+      pivot: {x: .526175857, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_159
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 63
+        width: 59
+        height: 53
+      alignment: 9
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_160
+      rect:
+        serializedVersion: 2
+        x: 851
+        y: 63
+        width: 95
+        height: 53
+      alignment: 9
+      pivot: {x: .122810446, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: PlayerBlond_161
+      rect:
+        serializedVersion: 2
+        x: 1043
+        y: 63
+        width: 93
+        height: 53
+      alignment: 9
+      pivot: {x: .121641099, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
