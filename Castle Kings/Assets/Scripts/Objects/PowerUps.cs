@@ -3,8 +3,9 @@ using System.Collections;
 
 public class PowerUps : MonoBehaviour {
 
-    enum PowerUpsType
+    public enum PowerUpsType
     {
+        NONE,
         IRON_STORM,
         DOUBLE_SPEED,
         BOMBER_MAN,
@@ -39,4 +40,15 @@ public class PowerUps : MonoBehaviour {
 	void Update () {
 	   
 	}
+
+    void OnTriggerEnter2D(Collider2D hitObj)
+    {
+        IPickUpper obj = hitObj.GetComponent<IPickUpper>();
+        if (obj != null)
+        {
+            Debug.Log("HAHA!");
+            obj.OnPickUp(m_type);
+            Destroy(this.gameObject);
+        }
+    }
 }

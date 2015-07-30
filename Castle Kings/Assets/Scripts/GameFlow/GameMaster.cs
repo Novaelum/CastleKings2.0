@@ -80,6 +80,16 @@ public class GameMaster : MonoBehaviour {
 
         }
 
+
+        // ========================
+        // LeftBumper || Action Button 4 (Y): Use PowerUp
+        // ------------------------
+        if (InputManager.Devices[0].LeftBumper.WasPressed || InputManager.Devices[0].Action4.WasPressed)
+        {
+            m_P1.UsePowerUp();
+        }
+
+
         // ========================
         // Action Button 1 (A) : Attacking
         // ------------------------

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Player : Character {
+public class Player : Character, IPickUpper {
     // Private const
     // Speed
     private const float SPEED_MAXIMUM = 0.1f;
@@ -34,6 +34,7 @@ public class Player : Character {
     private float m_speed;
     private int m_mana;
     private int m_health;
+    PowerUps.PowerUpsType m_cPowerUp;
     [HideInInspector] public int m_ID;
 
     // Getters
@@ -49,6 +50,7 @@ public class Player : Character {
         m_particles = GetComponent<ParticleSystem>();
         m_currentSide = Sides.FRONT;
         m_lastSide = Sides.FRONT;
+        m_cPowerUp = PowerUps.PowerUpsType.NONE;
         m_isMoving = false;
         m_isAttacking = false;
         m_carryPrincess = false;
@@ -152,6 +154,57 @@ public class Player : Character {
             m_animator.speed = 1; // In case the player was in idle
             StartCoroutine(WaitForAndDo(0.4f, "AttackEnded"));
         }
+    }
+
+    public void UsePowerUp()
+    {
+        Debug.Log(m_cPowerUp.ToString());
+        if (m_cPowerUp != PowerUps.PowerUpsType.NONE)
+        {
+            switch (m_cPowerUp)
+            {
+                case(PowerUps.PowerUpsType.IRON_STORM):
+                    IronStorm();
+                    break;
+                case (PowerUps.PowerUpsType.DOUBLE_SPEED):
+                    DoubleSpeed();
+                    break;
+                case (PowerUps.PowerUpsType.BOMBER_MAN):
+                    BomberMan();
+                    break;
+              //  case (PowerUps.PowerUpsType.CASTLE_KING):
+              //      CastleKing();
+              //      break;
+            }
+        }
+    }
+
+    private void IronStorm()
+    {
+        m_animator.Play("IronStorm", -1, 0);
+        m_isAttacking = true;
+        StartCoroutine(WaitForAndDo(1f, "IronStormDone"));
+    }
+
+    private void DoubleSpeed()
+    {
+
+    }
+
+    private void BomberMan()
+    {
+
+    }
+
+    private void CastleKing()
+    {
+
+    }
+
+    private void IronStormDone()
+    {
+        AttackEnded();
+        m_cPowerUp = PowerUps.PowerUpsType.NONE;
     }
 
     public void Dash(float p_X, float p_Y)
@@ -263,5 +316,12 @@ public class Player : Character {
     {
         yield return new WaitForSeconds(p_time);
         SendMessage(p_TODO);
+    }
+
+    // Interface call
+    public void OnPickUp(PowerUps.PowerUpsType p_type)
+    {
+        m_cPowerUp = p_type;
+        Debug.Log(m_cPowerUp.ToString());
     }
 }

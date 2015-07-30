@@ -16,7 +16,6 @@ public class PowerUpPlatform : MonoBehaviour {
 	}
 
     private void SpawnPU() {
-        Debug.Log("LALA!");
         GameObject powerUp = (GameObject)Object.Instantiate(m_powerUp.gameObject);
         powerUp.GetComponent<PowerUps>().Init(Random.Range(0, 15), transform.position);
     }

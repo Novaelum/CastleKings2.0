@@ -71,7 +71,6 @@ public class Orc : Character {
     // Init the corrent walking animation or idle (frame 0) base on the currentSide
     private void SetAnimations(string p_forBack, string p_forRight, string p_forFront, string p_forLeft)
     {
-        Debug.Log("Bonjour");
         switch (m_currentSide)
         {
             case Sides.BACK:
