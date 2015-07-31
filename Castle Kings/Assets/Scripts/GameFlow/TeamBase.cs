@@ -15,11 +15,31 @@ public class TeamBase : MonoBehaviour {
     public GameMaster.Teams m_team;
 
     [HideInInspector] public int m_score;
-
+    
 	// Use this for initialization
 	void Start () {
+        GameMaster.g_scoreDelegate.enemyKilled += OnEnemyKilled;
+        GameMaster.g_scoreDelegate.playerKilled += OnPlayerKilled;
         m_princessSaved = 0;
 	}
+
+    void OnEnemyKilled(GameMaster.Teams p_attackerTeam)
+    {
+        if (p_attackerTeam == m_team)
+        {
+            m_score += ENEMY_KILLED;
+            Debug.Log(m_team.ToString() + " team score : " + m_score);
+        }
+    }
+
+    void OnPlayerKilled(GameMaster.Teams p_attackerTeam)
+    {
+        if (p_attackerTeam == m_team)
+        {
+            m_score += PLAYER_KILLED;
+            Debug.Log(m_team.ToString() + " team score : " + m_score);
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D objHit)
     {

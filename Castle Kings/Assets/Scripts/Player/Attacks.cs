@@ -46,7 +46,7 @@ public class Attacks : MonoBehaviour {
         }
         else if (p_objHit.gameObject.tag == "Enemy")
         {
-            p_objHit.GetComponent<Enemy>().Damaged(p_damage);
+            p_objHit.GetComponent<Enemy>().Damaged(p_damage, m_Owner.m_team);
         }
     }
 }

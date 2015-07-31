@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 3c72c0d2f94a8214cb64461bf4a3b637
-timeCreated: 1437939959
-licenseType: Free
+timeCreated: 1438369396
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName:
     21300000: PlayerGreen_0
@@ -1728,8 +1728,8 @@ TextureImporter:
         y: 255
         width: 49
         height: 53
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .691201329, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_152
       rect:
@@ -1738,8 +1738,8 @@ TextureImporter:
         y: 255
         width: 48
         height: 51
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .669725418, y: .500000596}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_153
       rect:
@@ -1748,8 +1748,8 @@ TextureImporter:
         y: 256
         width: 57
         height: 51
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .75012207, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_154
       rect:
@@ -1758,8 +1758,8 @@ TextureImporter:
         y: 238
         width: 83
         height: 70
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .568707943, y: .604745507}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_155
       rect:
@@ -1768,8 +1768,8 @@ TextureImporter:
         y: 241
         width: 78
         height: 67
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .212771684, y: .585116267}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_156
       rect:
@@ -1798,8 +1798,8 @@ TextureImporter:
         y: 63
         width: 37
         height: 53
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .733946085, y: .500000298}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_159
       rect:
@@ -1808,8 +1808,8 @@ TextureImporter:
         y: 63
         width: 59
         height: 53
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .636930823, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_160
       rect:
@@ -1818,8 +1818,8 @@ TextureImporter:
         y: 63
         width: 95
         height: 53
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .18716976, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: PlayerGreen_161
       rect:
@@ -1828,8 +1828,8 @@ TextureImporter:
         y: 63
         width: 93
         height: 53
-      alignment: 0
-      pivot: {x: .5, y: .5}
+      alignment: 9
+      pivot: {x: .199057296, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 

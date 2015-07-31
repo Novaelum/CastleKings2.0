@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using InControl;
 
 public class GameMaster : MonoBehaviour {
+    public static KillScore g_scoreDelegate = new KillScore();
 
     public const int MAX_PLAYERS = 8;
 
@@ -17,7 +18,7 @@ public class GameMaster : MonoBehaviour {
     private int m_gameTimer;
 
     public Player m_P1;
-   // public Player p2;
+    public Player m_P2;
 
 	// Use this for initialization
 	void Start () {
@@ -32,54 +33,60 @@ public class GameMaster : MonoBehaviour {
 
     void CheckControls()
     {
+        InputManagement(0, m_P1);
+        if (InputManager.Devices.Count > 1)
+            InputManagement(1, m_P2);
+    }
+
+    private void InputManagement(int p_device, Player p_player) {
         // ========================
         // Right Trigger : Attacking
         // ------------------------
-        if (InputManager.Devices[0].RightTrigger.IsPressed)
+        if (InputManager.Devices[p_device].RightTrigger.IsPressed)
         {
-            m_P1.Attack();
+            p_player.Attack();
         }
         // ========================
         // Left Trigger
         // ------------------------
-        if (InputManager.Devices[0].LeftTrigger.IsPressed)
+        if (InputManager.Devices[p_device].LeftTrigger.IsPressed)
         {
-            Debug.Log("left trigger!" + InputManager.Devices[0].LeftTrigger.Value * -1);
+            Debug.Log("left trigger!" + InputManager.Devices[p_device].LeftTrigger.Value * -1);
         }
         // ========================
         // Left Stick : Movement
         // ------------------------
-        if (InputManager.Devices[0].LeftStickX.IsPressed || InputManager.Devices[0].LeftStickY.IsPressed)
+        if (InputManager.Devices[p_device].LeftStickX.IsPressed || InputManager.Devices[p_device].LeftStickY.IsPressed)
         {
-            m_P1.Move(InputManager.Devices[0].LeftStickX.Value, InputManager.Devices[0].LeftStickY.Value);
+            p_player.Move(InputManager.Devices[p_device].LeftStickX.Value, InputManager.Devices[p_device].LeftStickY.Value);
         }
-        if (InputManager.Devices[0].LeftStickY.WasReleased || InputManager.Devices[0].LeftStickX.WasReleased)
+        if (InputManager.Devices[p_device].LeftStickY.WasReleased || InputManager.Devices[p_device].LeftStickX.WasReleased)
         {
-            m_P1.StopMoving();
+            p_player.StopMoving();
         }
         // ========================
         // D-PAD : Movement
         // ------------------------
         // Pressed
-        if (InputManager.Devices[0].DPad.Up.IsPressed || InputManager.Devices[0].DPad.Right.IsPressed || InputManager.Devices[0].DPad.Down.IsPressed || InputManager.Devices[0].DPad.Left.IsPressed)
+        if (InputManager.Devices[p_device].DPad.Up.IsPressed || InputManager.Devices[p_device].DPad.Right.IsPressed || InputManager.Devices[p_device].DPad.Down.IsPressed || InputManager.Devices[p_device].DPad.Left.IsPressed)
         {
-            m_P1.Move(InputManager.Devices[0].DPad.X, InputManager.Devices[0].DPad.Y);
+            p_player.Move(InputManager.Devices[p_device].DPad.X, InputManager.Devices[p_device].DPad.Y);
         }
         // Released
-        if (InputManager.Devices[0].DPad.Up.WasReleased || InputManager.Devices[0].DPad.Right.WasReleased || InputManager.Devices[0].DPad.Down.WasReleased || InputManager.Devices[0].DPad.Left.WasReleased)
+        if (InputManager.Devices[p_device].DPad.Up.WasReleased || InputManager.Devices[p_device].DPad.Right.WasReleased || InputManager.Devices[p_device].DPad.Down.WasReleased || InputManager.Devices[p_device].DPad.Left.WasReleased)
         {
-            m_P1.StopMoving();
+            p_player.StopMoving();
         }
         // ========================
         // Right Stick : Orientation
         // ------------------------
-        if (InputManager.Devices[0].RightStickX.IsPressed || InputManager.Devices[0].RightStickY.IsPressed)
+        if (InputManager.Devices[p_device].RightStickX.IsPressed || InputManager.Devices[p_device].RightStickY.IsPressed)
         {
             // Check to see to witch extend the joystick is pushed to prevent unwilling action when it is released (might go in the opposing direction before stopping in the middle)
-            // Debug.Log("PosX" + InputManager.Devices[0].RightStickX.Value + " PosY " + InputManager.Devices[0].RightStickY.Value);
-            m_P1.SetSide((Mathf.Atan2(InputManager.Devices[0].RightStickX.Value, InputManager.Devices[0].RightStickY.Value)) * 180 / Mathf.PI);
+            // Debug.Log("PosX" + InputManager.Devices[p_device].RightStickX.Value + " PosY " + InputManager.Devices[p_device].RightStickY.Value);
+            p_player.SetSide((Mathf.Atan2(InputManager.Devices[p_device].RightStickX.Value, InputManager.Devices[p_device].RightStickY.Value)) * 180 / Mathf.PI);
         }
-        if (InputManager.Devices[0].GetControl(InputControlType.Back).WasPressed)
+        if (InputManager.Devices[p_device].GetControl(InputControlType.Back).WasPressed)
         {
 
         }
@@ -88,38 +95,38 @@ public class GameMaster : MonoBehaviour {
         // ========================
         // LeftBumper || Action Button 4 (Y): Use PowerUp
         // ------------------------
-        if (InputManager.Devices[0].LeftBumper.WasPressed || InputManager.Devices[0].Action4.WasPressed)
+        if (InputManager.Devices[p_device].LeftBumper.WasPressed || InputManager.Devices[p_device].Action4.WasPressed)
         {
-            m_P1.UsePowerUp();
+            p_player.UsePowerUp();
         }
 
 
         // ========================
         // Action Button 1 (A) : Attacking
         // ------------------------
-        if (InputManager.Devices[0].Action1.WasPressed)
+        if (InputManager.Devices[p_device].Action1.WasPressed)
         {
-            if (InputManager.Devices[0].LeftStickX.IsPressed || InputManager.Devices[0].LeftStickY.IsPressed)
+            if (InputManager.Devices[p_device].LeftStickX.IsPressed || InputManager.Devices[p_device].LeftStickY.IsPressed)
             {
-                m_P1.Dash(InputManager.Devices[0].LeftStickX.Value, InputManager.Devices[0].LeftStickY.Value);
+                p_player.Dash(InputManager.Devices[p_device].LeftStickX.Value, InputManager.Devices[p_device].LeftStickY.Value);
             }
-            else if (InputManager.Devices[0].DPad.Up.IsPressed || InputManager.Devices[0].DPad.Right.IsPressed || InputManager.Devices[0].DPad.Down.IsPressed || InputManager.Devices[0].DPad.Left.IsPressed)
+            else if (InputManager.Devices[p_device].DPad.Up.IsPressed || InputManager.Devices[p_device].DPad.Right.IsPressed || InputManager.Devices[p_device].DPad.Down.IsPressed || InputManager.Devices[p_device].DPad.Left.IsPressed)
             {
-                m_P1.Dash(InputManager.Devices[0].DPad.X, InputManager.Devices[0].DPad.Y);
+                p_player.Dash(InputManager.Devices[p_device].DPad.X, InputManager.Devices[p_device].DPad.Y);
             }
             else
             {
-                m_P1.Dash(0, 0);
+                p_player.Dash(0, 0);
             }
-           
+
         }
 
         // ========================
         // Action Button 3 (X) : Attacking
         // ------------------------
-        if (InputManager.Devices[0].Action3.WasPressed)
+        if (InputManager.Devices[p_device].Action3.WasPressed)
         {
-            m_P1.Attack();
+            p_player.Attack();
         }
     }
 

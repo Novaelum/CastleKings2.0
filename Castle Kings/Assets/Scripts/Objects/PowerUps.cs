@@ -18,7 +18,6 @@ public class PowerUps : MonoBehaviour {
 
 	// Initialization
 	public void Init(int p_type, Vector3 p_pos, PowerUpPlatform p_owner) {
-        Debug.Log(p_type);
         m_animator = GetComponent<Animator>();
         transform.position = p_pos;
         InitPower(p_type);

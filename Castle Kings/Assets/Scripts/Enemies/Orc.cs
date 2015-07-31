@@ -27,7 +27,7 @@ public class Orc : Enemy {
     private float m_attackTimer;
 
    
-    private const int DAMAGE_OUTPUT = 50;
+    private const int DAMAGE_OUTPUT = 10;
 
 	// Use this for initialization
 	void Start () {
@@ -107,14 +107,14 @@ public class Orc : Enemy {
     // Updates the sides of the orc and makes him move base on the current target (m_targetList[0].target)
     private void AttackUpdate()
     {
-        if (!m_isAttacking)
+        if (m_isAttacking)
         {
             //SetSide(Mathf.Atan(Mathf.Abs((m_targetsList[0].targetPos.position.y - transform.position.y) / (m_targetsList[0].targetPos.position.x - transform.position.x))) * 180 / Mathf.PI);
             SetSide(Mathf.Atan2((m_targetsList[0].target.transform.position.y - transform.position.y), (m_targetsList[0].target.transform.position.x - transform.position.x)) * 180 / Mathf.PI);
         }
         else
         {
-            SetSide(Mathf.Atan2((m_targetsList[0].target.transform.position.y - transform.position.y), ((m_targetsList[0].target.transform.position.x - transform.position.x)) * 180 / Mathf.PI) * -1);
+         //   SetSide(Mathf.Atan2((m_targetsList[0].target.transform.position.y - transform.position.y), ((m_targetsList[0].target.transform.position.x - transform.position.x)) * 180 / Mathf.PI) * -1);
         }
         Move();
     }
@@ -192,7 +192,7 @@ public class Orc : Enemy {
     {
         for (int i = 0; m_targetsList[i].target != null; i++)
         {
-            m_targetsList[i].priorityValue = HealthPriority(m_targetsList[i].target) + RangePriority(m_targetsList[i].target);
+            m_targetsList[i].priorityValue = (HealthPriority(m_targetsList[i].target) + RangePriority(m_targetsList[i].target) + CarriesPrincessPriority(m_targetsList[i].target));
         }
     }
 
@@ -263,6 +263,18 @@ public class Orc : Enemy {
         }
     }
 
+    private int CarriesPrincessPriority(Player p_cTarget)
+    {
+        if (p_cTarget.IsCarryingPrincess())
+        {
+            return 15;
+        }
+        else
+        {
+            return 0;
+        }
+    }
+
     private void Move() 
     {
         Vector3 targetPos = m_targetsList[0].target.transform.position;
@@ -296,7 +308,7 @@ public class Orc : Enemy {
         }
     }
 
-    override public void Damaged(int p_damage)
+    override public void Damaged(int p_damage, GameMaster.Teams p_attackerTeam)
     {
         m_healthTimer = 0;
         if (m_isHealing) {
@@ -305,13 +317,14 @@ public class Orc : Enemy {
             
         StartCoroutine(Attacked());
         m_health -= p_damage;
-        CheckDeath();
+        CheckDeath(p_attackerTeam);
     }
 
-    private void CheckDeath()
+    private void CheckDeath(GameMaster.Teams p_attackerTeam)
     {
         if (m_health <= 0)
         {
+            Enemy.Died(p_attackerTeam);
             Spawner.g_enemyCount--;
             GameObject.Destroy(this.gameObject);
         }

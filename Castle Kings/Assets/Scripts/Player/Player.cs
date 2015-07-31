@@ -36,12 +36,13 @@ public class Player : Character, IPickUpper {
     Sides m_lastSide;
 
     // States
-    bool m_isMoving; // Whether or not movements keys are active
-    bool m_isAttacking;
-    bool m_isDashing;
-    bool m_carryPrincess;
-    bool m_isImmune;
-    bool m_isPowerUpActive;
+    private bool m_isMoving; // Whether or not movements keys are active
+    private bool m_isAttacking;
+    private bool m_isDashing;
+    private bool m_carryPrincess;
+    private bool m_isImmune;
+    private bool m_isPowerUpActive;
+    private bool m_isDead;
 
     // Variables
     private float m_speed;
@@ -57,7 +58,10 @@ public class Player : Character, IPickUpper {
     private const float TIMER_BOMB = 1f;
     private const float TIMER_DOUBLE_SPEED = 5f;
 
+    private const float TIMER_DEATH = 1f;
+
     private float m_powerUpTimer;
+    private float m_deathTimer;
 
     // Getters
     public int GetHealth()              { return m_health; }
@@ -85,7 +89,9 @@ public class Player : Character, IPickUpper {
             Princess prin = (Princess)GameObject.FindObjectOfType(typeof(Princess));
             prin.RespawnAt(transform.position);
         }
-            
+
+        m_isDead = false;
+        m_deathTimer = 0;
 
         m_powerUpCD = 0;
         m_isMoving = false;
@@ -121,6 +127,8 @@ public class Player : Character, IPickUpper {
         CheckSideChange();
         if (m_isPowerUpActive)
             PowerUpActive();
+        if (m_isDead)
+            RespawnTimer();
 	}
 
     private void CheckSideChange()
@@ -168,6 +176,13 @@ public class Player : Character, IPickUpper {
             m_attackType = ATTACK_DEFAULT;
             m_isPowerUpActive = false;
         }
+    }
+
+    private void RespawnTimer()
+    {
+        m_deathTimer += Time.deltaTime;
+        if (m_deathTimer >= TIMER_DEATH)
+            Spawn();
     }
 
     // Init the corrent walking animation or idle (frame 0) base on the currentSide
@@ -222,31 +237,37 @@ public class Player : Character, IPickUpper {
             m_isMoving = true;
         }
 
-        Vector2 moveDirection = new Vector2(p_X, p_Y);
-        if (p_speed == 0)
+        if (!m_isDead)
         {
-            moveDirection *= m_speed;
-            m_rbody2D.transform.Translate(moveDirection);
-        }
-        else
-        {
-            // TODO: Find a way to check for walls to avoid teleporting over
-            m_mana -= MANACOST_DASH;
-            m_isDashing = true;
-            moveDirection *= p_speed;
-            m_rbody2D.transform.Translate(moveDirection);
-            StartCoroutine(WaitForAndDo(0.1f, "DashEnded"));
+            Vector2 moveDirection = new Vector2(p_X, p_Y);
+            if (p_speed == 0)
+            {
+                moveDirection *= m_speed;
+                m_rbody2D.transform.Translate(moveDirection);
+            }
+            else
+            {
+                // TODO: Find a way to check for walls to avoid teleporting over
+                m_mana -= MANACOST_DASH;
+                m_isDashing = true;
+                moveDirection *= p_speed;
+                m_rbody2D.transform.Translate(moveDirection);
+                StartCoroutine(WaitForAndDo(0.1f, "DashEnded"));
+            }
         }
     }
 
     public void StopMoving() {
-        SetAnimations("BackWalk", "RightWalk", "FrontWalk", "LeftWalk"); // Reset animation to get back to the first animation frame (idle)
-        m_animator.speed = 0;
-        m_isMoving = false;
+        if (!m_isDead)
+        {
+            SetAnimations("BackWalk", "RightWalk", "FrontWalk", "LeftWalk"); // Reset animation to get back to the first animation frame (idle)
+            m_animator.speed = 0;
+            m_isMoving = false;
+        }  
     }
 
     public void Attack() {
-        if (!m_isAttacking)
+        if (!m_isAttacking && !m_isDead)
         {
             m_isAttacking = true;
             SetAnimations("BackAttack", "RightAttack", "FrontAttack", "LeftAttack");
@@ -363,15 +384,12 @@ public class Player : Character, IPickUpper {
     {
         if (!m_isImmune)
         {
+            m_isImmune = true;
+            m_isDead = true;
             m_animator.Play("Death", -1, 0);
             if (m_carryPrincess)
-            {
                 m_particles.Stop();
-            }
-            m_isImmune = true;
-            StartCoroutine(WaitForAndDo(1.0f, "Spawn"));
         }
-       
     }
 
     public void TakesDamage(int p_damage)
