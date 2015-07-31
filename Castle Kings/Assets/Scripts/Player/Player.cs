@@ -252,7 +252,7 @@ public class Player : Character, IPickUpper {
                 m_isDashing = true;
                 moveDirection *= p_speed;
                 m_rbody2D.transform.Translate(moveDirection);
-                StartCoroutine(WaitForAndDo(0.1f, "DashEnded"));
+                Invoke("DashEnded", 0.1f);
             }
         }
     }
@@ -272,7 +272,7 @@ public class Player : Character, IPickUpper {
             m_isAttacking = true;
             SetAnimations("BackAttack", "RightAttack", "FrontAttack", "LeftAttack");
             m_animator.speed = 1; // In case the player was in idle
-            StartCoroutine(WaitForAndDo(0.4f, "AttackEnded"));
+            Invoke("AttackEnded", 0.4f);
         }
     }
 
@@ -427,12 +427,6 @@ public class Player : Character, IPickUpper {
         m_rbody2D.velocity = Vector3.zero;
         m_rbody2D.angularVelocity = 0;
         Attack();
-    }
-
-    IEnumerator WaitForAndDo(float p_time, string p_TODO)
-    {
-        yield return new WaitForSeconds(p_time);
-        SendMessage(p_TODO);
     }
 
     // Interface call

@@ -25,7 +25,6 @@ public class Orc : Enemy {
     private float m_tarSelectTimer;
     private float m_healthTimer;
     private float m_attackTimer;
-
    
     private const int DAMAGE_OUTPUT = 10;
 
@@ -56,7 +55,6 @@ public class Orc : Enemy {
         SideUpdate();
         TimerUpdate();
         AttackUpdate();
-        
         if (m_isHealing)
         {
             m_health = m_health < 100 ? m_health += 4 : 100;
