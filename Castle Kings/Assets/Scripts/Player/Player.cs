@@ -2,15 +2,28 @@
 using System.Collections;
 
 public class Player : Character, IPickUpper {
+    // Owner (base)
+    public TeamBase m_owner;
+
     // Private const
     // Speed
     private const float SPEED_MAXIMUM = 0.1f;
     private const float SPEED_DEFAULT = 0.05f;
     private const float SPEED_MINIMUM = 0.025f;
     public float SPEED_DASH = 4f;
+    [HideInInspector] public GameMaster.Teams m_team;
+
+    // Stats
+    private const int MAX_HEALTH = 100;
+    private const int MAX_MANA = 100;
 
     // Manacost
     private const int MANACOST_DASH = 50;
+
+    // Attack type
+    private const int ATTACK_DEFAULT = 0;
+    private const int ATTACK_BOMB = 1;
+    private const int ATTACK_IRONSTORM = 2;
 
     // Components
     Rigidbody2D m_rbody2D;
@@ -27,39 +40,63 @@ public class Player : Character, IPickUpper {
     bool m_isAttacking;
     bool m_isDashing;
     bool m_carryPrincess;
-    bool m_dead;
-    int m_score;
+    bool m_isImmune;
 
     // Variables
     private float m_speed;
     private int m_mana;
     private int m_health;
+    private int m_attackType;
     PowerUps.PowerUpsType m_cPowerUp;
     [HideInInspector] public int m_ID;
 
     // Getters
-    public int GetHealth() { return m_health; }
-    public bool IsCarryingPrincess() { return m_carryPrincess; }
+    public int GetHealth()              { return m_health; }
+    public int GetAttackType()          { return m_attackType; }
+    public bool IsImmune()              { return m_isImmune; }
+    public bool IsCarryingPrincess()    { return m_carryPrincess; }
 
 	// Use this for initialization
 	void Start () {
-        m_ID = 0;
         m_animator = GetComponent<Animator>();
         m_rbody2D = GetComponent<Rigidbody2D>();
         m_sprRen = GetComponent<SpriteRenderer>();
         m_particles = GetComponent<ParticleSystem>();
-        m_currentSide = Sides.FRONT;
-        m_lastSide = Sides.FRONT;
-        m_cPowerUp = PowerUps.PowerUpsType.NONE;
+        m_team = m_owner.m_team;
+
+        Spawn();
+	}
+
+    private void Spawn()
+    {
         m_isMoving = false;
         m_isAttacking = false;
         m_carryPrincess = false;
-        m_dead = false;
-        m_speed = SPEED_DEFAULT;
-        m_mana = 100;
+
+        m_currentSide = Sides.FRONT;
+        m_lastSide = Sides.FRONT;
+        m_cPowerUp = PowerUps.PowerUpsType.NONE;
+
         m_particles.Stop();
-        Spawn();
-	}
+
+        m_speed = SPEED_DEFAULT;
+        m_health = MAX_HEALTH;
+        m_mana = MAX_MANA;
+        m_attackType = ATTACK_DEFAULT;
+
+        Debug.Log("SpawnRoutine for " + m_team.ToString());
+        StartCoroutine(SpawnRoutine());
+    }
+
+    IEnumerator SpawnRoutine()
+    {
+        transform.position = m_owner.transform.position;
+        m_isImmune = true;
+        yield return new WaitForSeconds(3f);
+        m_isImmune = false;
+        Debug.Log("Back to life bitches!");
+        yield return null;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -70,7 +107,8 @@ public class Player : Character, IPickUpper {
             {
                 SetAnimations("BackWalk", "RightWalk", "FrontWalk", "LeftWalk");
             }
-            //Debug.Log("Updated!");
+            if (m_mana != 100)
+                m_mana = m_mana < 100 ? m_mana += 3 : 100;
         }
 	}
 
@@ -133,9 +171,9 @@ public class Player : Character, IPickUpper {
         }
         else
         {
-            Debug.Log("TO");
-            moveDirection *= p_speed;
-            m_rbody2D.AddForce(moveDirection, ForceMode2D.Impulse);
+            transform.position = Vector2.MoveTowards(transform.position, moveDirection, Time.deltaTime * p_speed);
+           // moveDirection *= p_speed;
+           // m_rbody2D.AddForce(moveDirection, ForceMode2D.Impulse);
             StartCoroutine(WaitForAndDo(1f, "DashEnded"));
         }
     }
@@ -163,14 +201,16 @@ public class Player : Character, IPickUpper {
         {
             switch (m_cPowerUp)
             {
-                case(PowerUps.PowerUpsType.IRON_STORM):
-                    IronStorm();
+                case(PowerUps.PowerUpsType.IRONSTORM):
+                    if (!m_isAttacking)
+                        IronStorm();
                     break;
                 case (PowerUps.PowerUpsType.DOUBLE_SPEED):
                     DoubleSpeed();
                     break;
                 case (PowerUps.PowerUpsType.BOMBER_MAN):
-                    BomberMan();
+                    if (!m_isAttacking)
+                        BomberMan();
                     break;
               //  case (PowerUps.PowerUpsType.CASTLE_KING):
               //      CastleKing();
@@ -181,6 +221,7 @@ public class Player : Character, IPickUpper {
 
     private void IronStorm()
     {
+        m_attackType = ATTACK_IRONSTORM;
         m_animator.Play("IronStorm", -1, 0);
         m_isAttacking = true;
         StartCoroutine(WaitForAndDo(1f, "IronStormDone"));
@@ -205,6 +246,7 @@ public class Player : Character, IPickUpper {
     {
         AttackEnded();
         m_cPowerUp = PowerUps.PowerUpsType.NONE;
+        m_attackType = ATTACK_DEFAULT;
     }
 
     public void Dash(float p_X, float p_Y)
@@ -253,18 +295,33 @@ public class Player : Character, IPickUpper {
             m_animator.speed = 0;
     }
 
-    // Event functions (call with SendMessage)
     void Killed()
     {
-        if (!m_dead)
+        if (!m_isImmune)
         {
             m_animator.Play("Death", -1, 0);
             if (m_carryPrincess)
+            {
                 m_particles.Stop();
-            m_dead = true;
+            }
+            m_isImmune = true;
             StartCoroutine(WaitForAndDo(1.0f, "Spawn"));
         }
        
+    }
+
+    public void TakesDamage(int p_damage)
+    {
+        if (!m_isImmune)
+        {
+            m_health -= p_damage;
+           // StartCoroutine(Attacked());
+           // Debug.Log("Hey!" + m_health);
+            if (m_health <= 0)
+            {
+                Killed();
+            }
+        }
     }
 
     void TakePrincess()
@@ -275,33 +332,11 @@ public class Player : Character, IPickUpper {
         m_particles.Play();
     }
 
-    void Score()
+    void Scored()
     {
-        m_score += 150;
         m_particles.Stop();
         m_carryPrincess = false;
         m_speed = SPEED_DEFAULT;
-
-        // TODO: Respawn princess
-
-        Debug.Log(m_score);
-    }
-
-    public void IncreaseScore(int p_byAmount)
-    {
-        m_score += p_byAmount;
-        Debug.Log(m_score);
-    }
-
-    public bool IsDead()
-    {
-        return m_dead;
-    }
-
-    private void Spawn()
-    {
-        m_dead = false;
-        
     }
 
     private void DashEnded()

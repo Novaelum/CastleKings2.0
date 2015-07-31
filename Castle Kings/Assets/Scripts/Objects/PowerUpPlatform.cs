@@ -7,7 +7,7 @@ public class PowerUpPlatform : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SpawnPU();
+        SetTimer();
 	}
 	
 	// Update is called once per frame
@@ -17,6 +17,17 @@ public class PowerUpPlatform : MonoBehaviour {
 
     private void SpawnPU() {
         GameObject powerUp = (GameObject)Object.Instantiate(m_powerUp.gameObject);
-        powerUp.GetComponent<PowerUps>().Init(Random.Range(0, 15), transform.position);
+        powerUp.GetComponent<PowerUps>().Init(Random.Range(0, 15), transform.position, this);
+    }
+
+    public void SetTimer()
+    {
+        StartCoroutine(WaitForAndDo(Random.Range(6, 12), "SpawnPU"));
+    }
+
+    IEnumerator WaitForAndDo(float p_time, string p_TODO)
+    {
+        yield return new WaitForSeconds(p_time);
+        SendMessage(p_TODO);
     }
 }

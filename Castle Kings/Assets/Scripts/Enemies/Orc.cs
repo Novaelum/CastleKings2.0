@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 
-public class Orc : Character {
+public class Orc : Enemy, ISpawnable {
 
     struct TargetInfos
     {
-        public Transform targetPos;
+        public Player target;
         public int priorityValue;
     };
 
@@ -14,22 +15,40 @@ public class Orc : Character {
     Sides m_lastSide;
 
     private TargetInfos[] m_targetsList = new TargetInfos[8];
-    private Rigidbody2D m_rbody2D;
     private Animator m_animator;
+    private Collider2D m_collider;
+
     private float m_speed;
     private bool m_isAttacking;
+    private bool m_hasAttacked;
+    private bool m_isHealing;
+    private float m_healthTimer;
+
+    private const int HEALTH_COOLDOWN = 8;
+    private const int DAMAGE_OUTPUT = 10;
 
 	// Use this for initialization
 	void Start () {
+        m_healthTimer = 0;
+        m_isHealing = true;
+        m_hasAttacked = false;
         m_currentSide = Sides.FRONT;
         m_lastSide = Sides.FRONT;
-        m_rbody2D = GetComponent<Rigidbody2D>();
+        
         m_animator = GetComponent<Animator>();
+        m_collider = GetComponent<Collider2D>();
+
+
         m_health = 100;
-        m_speed = 3f;
+        m_speed = 1.5f;
         InitTargetsList();
         SelectTarget();
 	}
+
+    override public void Init(Vector3 p_pos)
+    {
+        transform.position = p_pos;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,11 +58,20 @@ public class Orc : Character {
             SetAnimations("BackWalk", "RightWalk", "FrontWalk", "LeftWalk");
         }
 
-        if (m_isAttacking)
+        if (!m_isAttacking)
         {
             //SetSide(Mathf.Atan(Mathf.Abs((m_targetsList[0].targetPos.position.y - transform.position.y) / (m_targetsList[0].targetPos.position.x - transform.position.x))) * 180 / Mathf.PI);
-            SetSide(Mathf.Atan2((m_targetsList[0].targetPos.position.y - transform.position.y), (m_targetsList[0].targetPos.position.x - transform.position.x)) * 180 / Mathf.PI);
-            AttackTarget();
+            SetSide(Mathf.Atan2((m_targetsList[0].target.transform.position.y - transform.position.y), (m_targetsList[0].target.transform.position.x - transform.position.x)) * 180 / Mathf.PI);
+        }
+        else
+        {
+            SetSide(Mathf.Atan2((m_targetsList[0].target.transform.position.y - transform.position.y), ((m_targetsList[0].target.transform.position.x - transform.position.x)) * 180 / Mathf.PI) * -1);
+        }
+        Move();
+
+        if (m_isHealing)
+        {
+            m_health = m_health < 100 ? m_health += 4 : 100;
         }
         
 	}
@@ -97,7 +125,7 @@ public class Orc : Character {
         int i = 0;
         foreach (Player p in GameObject.FindObjectsOfType(typeof(Player)))
         {
-            m_targetsList[i].targetPos = p.transform;
+            m_targetsList[i].target = p;
             m_targetsList[i].priorityValue = 0;
             i++;
         }
@@ -107,35 +135,114 @@ public class Orc : Character {
     {
         SetPriorities();
         SortTargetsList();
-        m_isAttacking = true;
+        if (m_health > 30)
+        {
+            m_isAttacking = true;
+        }
+        else
+        {
+            m_isAttacking = false;
+        }
+        
+        StartCoroutine(Cooldown(2f, "SelectTarget"));
     }
 
     private void SetPriorities()
     {
-
+        for (int i = 0; m_targetsList[i].target != null; i++)
+        {
+            m_targetsList[i].priorityValue = HealthPriority(m_targetsList[i].target) + RangePriority(m_targetsList[i].target);
+        }
     }
 
     // Generate a number base on the target's health
     private int HealthPriority(Player p_cTarget) {
-        return 0;
+        int tHealth = p_cTarget.GetHealth();
+        if (tHealth >= 85)
+        {
+            return 0;
+        }
+        else if (tHealth < 85 && tHealth >= 70)
+        {
+            return 1;
+        }
+        else if (tHealth < 70 && tHealth >= 55)
+        {
+            return 2;
+        }
+        else if (tHealth < 55 && tHealth >= 40)
+        {
+            return 3;
+        }
+        else if (tHealth < 40 && tHealth >= 25)
+        {
+            return 4;
+        }
+        else if (tHealth < 25 && tHealth >= 10)
+        {
+            return 5;
+        }
+        else
+        {
+            return 8;
+        }
     }
 
     // Generate a number base on the target's range from self position
     private int RangePriority(Player p_cTarget)
     {
-        return 0;
+        float dist = Mathf.Sqrt((Mathf.Pow((p_cTarget.transform.position.x - transform.position.x), 2)) + (Mathf.Pow((p_cTarget.transform.position.y - transform.position.y), 2)));
+        if (dist >= 30)
+        {
+            return 0;
+        }
+        else if (dist < 30 && dist >= 25)
+        {
+            return 1;
+        }
+        else if (dist < 25 && dist >= 20)
+        {
+            return 2;
+        }
+        else if (dist < 20 && dist >= 15)
+        {
+            return 3;
+        }
+        else if (dist < 15 && dist >= 10)
+        {
+            return 4;
+        }
+        else if (dist < 10 && dist >= 5)
+        {
+            return 5;
+        }
+        else
+        {
+            return 6;
+        }
     }
 
-
-
-    private void AttackTarget() 
+    private void Move() 
     {
-        transform.position = Vector2.MoveTowards(transform.position, m_targetsList[0].targetPos.position, Time.deltaTime * m_speed);
+        Vector3 targetPos = m_targetsList[0].target.transform.position;
+        if (m_isAttacking)
+        {
+            // Check if the target is farther than the specified range
+            if (Mathf.Sqrt((Mathf.Pow((targetPos.x - transform.position.x), 2)) + (Mathf.Pow((targetPos.y - transform.position.y), 2))) > 0.5f)
+                transform.position = Vector2.MoveTowards(transform.position, targetPos, Time.deltaTime * m_speed);
+        }
+        else
+            transform.position = Vector2.MoveTowards(transform.position, targetPos, Time.deltaTime * m_speed) * -1;
+    }
+
+    void AttackCDComplete()
+    {
+        m_hasAttacked = false;
     }
 
     // Sort the target list by priorityValue (bigger number gets first)
     private void SortTargetsList() {
-        for (int i = 0; m_targetsList[i].targetPos != null; i++)
+        for (int i = 0; m_targetsList[i].target != null; i++)
         {
             int j = i;
             while (j > 0 && m_targetsList[j - 1].priorityValue < m_targetsList[j].priorityValue)
@@ -147,4 +254,73 @@ public class Orc : Character {
             }
         }
     }
+
+    override public void Damaged(int p_damage)
+    {
+        m_healthTimer = 0;
+        if (m_isHealing) {
+            m_isHealing = false;
+            StartCoroutine(HealthTimer());
+        }
+            
+      //  StartCoroutine(Attacked());
+        m_health -= p_damage;
+        CheckDeath();
+    }
+
+    private void CheckDeath()
+    {
+        if (m_health <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator Cooldown(float p_time, string p_TODO)
+    {
+        yield return new WaitForSeconds(p_time);
+        SendMessage(p_TODO);
+    }
+    
+    IEnumerator HealthTimer()
+    {
+        for (; m_healthTimer != HEALTH_COOLDOWN; m_healthTimer++)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        m_isHealing = true;
+        yield return null;
+    }
+
+
+    // Collision handling
+
+    void OnTriggerStay2D(Collider2D objHit)
+  {
+      // If not a player, the orc will collide with it (trigger false)
+      if (objHit.tag == "Player")
+      {
+          if (!m_hasAttacked)
+          {
+              m_hasAttacked = true;
+              objHit.GetComponent<Player>().TakesDamage(DAMAGE_OUTPUT);
+              StartCoroutine(Cooldown(1f, "AttackCDComplete"));
+          }
+            
+          
+      }
+      else
+      {
+          m_collider.isTrigger = false;
+      }
+  }
+  
+  void OnCollisionEnter2D(Collision2D objHit)
+  {
+     // If objHit is a player, the orc will not collide with it (trigger true)
+     if (objHit.gameObject.tag == "Player")
+     {
+         m_collider.isTrigger = true;
+     }
+  }
 }

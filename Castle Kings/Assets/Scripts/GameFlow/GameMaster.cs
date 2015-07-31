@@ -1,29 +1,31 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using InControl;
 
 public class GameMaster : MonoBehaviour {
 
-    enum Teams
+    public enum Teams
     {
         BLUE,
         RED
     }
 
+    private const int GAME_DURATION = 180; // Game duration is 3 minutes
+    private int m_gameTimer;
+
     public Player m_P1;
    // public Player p2;
 
-    List<Tower> m_actorList;
-
 	// Use this for initialization
 	void Start () {
-        
+        m_gameTimer = 0;
+        StartCoroutine(GameRoutine());
 	}
 	
 	// Update is called once per frame
 	void Update () {
         CheckControls();
-        UpdateTowers();
 	}
 
     void CheckControls()
@@ -119,8 +121,21 @@ public class GameMaster : MonoBehaviour {
         }
     }
 
+    IEnumerator GameRoutine()
+    {
+        for (; m_gameTimer < GAME_DURATION; m_gameTimer += 5)
+        {
+            // Wait time before updating the current number of active enemies
+            yield return new WaitForSeconds(5);
+            Spawner.CountEnemies();
+        }
+        // Once the loop completes, the game ends
+        GameDone();
+        yield return null;
+    }
 
-    void UpdateTowers() {
-        
+    public void GameDone()
+    {
+        // TODO: Ending screen or whatev
     }
 }
