@@ -3,15 +3,30 @@ using System.Collections;
 
 public class Spawner : MonoBehaviour {
 
-    static int g_enemyCount;
+    static public int g_enemyCount = 0;
 
-    public MonoBehaviour m_prefab;
+    public Enemy m_prefab;
+
+    private float m_timerRange;
+    private float m_timer;
+    
 
 	// Use this for initialization
 	void Start () {
-        GetComponent<SpriteRenderer>().enabled = false; // Make sure the spawner is invisible to the player
-        SpawnEnemy();
+        m_timer = 0;
+        m_timerRange = Random.Range(8, 20);
+        GetComponent<SpriteRenderer>().enabled = false; // Makes sure the spawner is invisible to the player
 	}
+
+    // Update is called once per frame
+    void Update()
+    {
+        m_timer += Time.deltaTime;
+        if (m_timer >= m_timerRange)
+        {
+            SpawnEnemy();
+        }
+    }
 
     private void SpawnEnemy()
     {
@@ -21,23 +36,7 @@ public class Spawner : MonoBehaviour {
             spawned.GetComponent<Enemy>().Init(transform.position);
             g_enemyCount++;
         }
-        StartCoroutine(SpawnerCooldown());
-    }
-
-    IEnumerator SpawnerCooldown()
-    {
-        yield return new WaitForSeconds(10f);
-        SpawnEnemy();
-    }
-
-
-    // Count the number of enemies present on the map, called by GameMaster
-    static public void CountEnemies()
-    {
-        g_enemyCount = 0;
-        foreach (Enemy en in GameObject.FindObjectsOfType(typeof(Enemy)))
-        {
-            g_enemyCount++;
-        }
+        m_timer = 0;
+        m_timerRange = Random.Range(8, 20);
     }
 }

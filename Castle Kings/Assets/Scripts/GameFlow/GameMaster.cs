@@ -5,6 +5,8 @@ using InControl;
 
 public class GameMaster : MonoBehaviour {
 
+    public const int MAX_PLAYERS = 8;
+
     public enum Teams
     {
         BLUE,
@@ -127,7 +129,6 @@ public class GameMaster : MonoBehaviour {
         {
             // Wait time before updating the current number of active enemies
             yield return new WaitForSeconds(5);
-            Spawner.CountEnemies();
         }
         // Once the loop completes, the game ends
         GameDone();

@@ -2,19 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Orc : Enemy, ISpawnable {
-
-    struct TargetInfos
-    {
-        public Player target;
-        public int priorityValue;
-    };
+public class Orc : Enemy {
 
     private int m_health;
     Sides m_currentSide;
     Sides m_lastSide;
 
-    private TargetInfos[] m_targetsList = new TargetInfos[8];
+    private TargetInfos[] m_targetsList = new TargetInfos[GameMaster.MAX_PLAYERS];
     private Animator m_animator;
     private Collider2D m_collider;
 
@@ -22,10 +16,18 @@ public class Orc : Enemy, ISpawnable {
     private bool m_isAttacking;
     private bool m_hasAttacked;
     private bool m_isHealing;
-    private float m_healthTimer;
 
-    private const int HEALTH_COOLDOWN = 8;
-    private const int DAMAGE_OUTPUT = 10;
+    // Timers
+    private const float TIMER_SELECTION = 5f;
+    private const float TIMER_HEALTH = 8f;
+    private const float TIMER_ATTACK = 2f;
+
+    private float m_tarSelectTimer;
+    private float m_healthTimer;
+    private float m_attackTimer;
+
+   
+    private const int DAMAGE_OUTPUT = 50;
 
 	// Use this for initialization
 	void Start () {
@@ -37,7 +39,6 @@ public class Orc : Enemy, ISpawnable {
         
         m_animator = GetComponent<Animator>();
         m_collider = GetComponent<Collider2D>();
-
 
         m_health = 100;
         m_speed = 1.5f;
@@ -52,12 +53,60 @@ public class Orc : Enemy, ISpawnable {
 	
 	// Update is called once per frame
 	void Update () {
+        SideUpdate();
+        TimerUpdate();
+        AttackUpdate();
+        
+        if (m_isHealing)
+        {
+            m_health = m_health < 100 ? m_health += 4 : 100;
+        }
+	}
+
+    private void SideUpdate() {
         if (m_currentSide != m_lastSide)
         {
             m_lastSide = m_currentSide;
             SetAnimations("BackWalk", "RightWalk", "FrontWalk", "LeftWalk");
         }
+    }
 
+    // Updates all the timers
+    private void TimerUpdate()
+    {
+        // Target Selection (loops)
+        m_tarSelectTimer += Time.deltaTime;
+        if (m_tarSelectTimer >= TIMER_SELECTION)
+        {
+            SelectTarget();
+        }
+
+        // Attack cooldown
+        if (m_hasAttacked)
+        {
+            m_attackTimer += Time.deltaTime;
+            if (m_attackTimer >= TIMER_ATTACK)
+            {
+                m_hasAttacked = false;
+                m_attackTimer = 0;
+            }
+        }
+
+        // Healing cooldown
+        if (!m_isHealing)
+        {
+            m_healthTimer += Time.deltaTime;
+            if (m_healthTimer >= TIMER_HEALTH)
+            {
+                m_isHealing = true;
+                m_healthTimer = 0;
+            }
+        }
+    }
+
+    // Updates the sides of the orc and makes him move base on the current target (m_targetList[0].target)
+    private void AttackUpdate()
+    {
         if (!m_isAttacking)
         {
             //SetSide(Mathf.Atan(Mathf.Abs((m_targetsList[0].targetPos.position.y - transform.position.y) / (m_targetsList[0].targetPos.position.x - transform.position.x))) * 180 / Mathf.PI);
@@ -68,13 +117,7 @@ public class Orc : Enemy, ISpawnable {
             SetSide(Mathf.Atan2((m_targetsList[0].target.transform.position.y - transform.position.y), ((m_targetsList[0].target.transform.position.x - transform.position.x)) * 180 / Mathf.PI) * -1);
         }
         Move();
-
-        if (m_isHealing)
-        {
-            m_health = m_health < 100 ? m_health += 4 : 100;
-        }
-        
-	}
+    }
 
     public void SetSide(float p_angle)
     {
@@ -143,8 +186,6 @@ public class Orc : Enemy, ISpawnable {
         {
             m_isAttacking = false;
         }
-        
-        StartCoroutine(Cooldown(2f, "SelectTarget"));
     }
 
     private void SetPriorities()
@@ -164,27 +205,27 @@ public class Orc : Enemy, ISpawnable {
         }
         else if (tHealth < 85 && tHealth >= 70)
         {
-            return 1;
+            return 2;
         }
         else if (tHealth < 70 && tHealth >= 55)
         {
-            return 2;
+            return 4;
         }
         else if (tHealth < 55 && tHealth >= 40)
         {
-            return 3;
+            return 6;
         }
         else if (tHealth < 40 && tHealth >= 25)
         {
-            return 4;
+            return 8;
         }
         else if (tHealth < 25 && tHealth >= 10)
         {
-            return 5;
+            return 10;
         }
         else
         {
-            return 8;
+            return 12;
         }
     }
 
@@ -214,11 +255,11 @@ public class Orc : Enemy, ISpawnable {
         }
         else if (dist < 10 && dist >= 5)
         {
-            return 5;
+            return 10;
         }
         else
         {
-            return 6;
+            return 12;
         }
     }
 
@@ -260,10 +301,9 @@ public class Orc : Enemy, ISpawnable {
         m_healthTimer = 0;
         if (m_isHealing) {
             m_isHealing = false;
-            StartCoroutine(HealthTimer());
         }
             
-      //  StartCoroutine(Attacked());
+        StartCoroutine(Attacked());
         m_health -= p_damage;
         CheckDeath();
     }
@@ -272,55 +312,23 @@ public class Orc : Enemy, ISpawnable {
     {
         if (m_health <= 0)
         {
-            Destroy(this.gameObject);
+            Spawner.g_enemyCount--;
+            GameObject.Destroy(this.gameObject);
         }
-    }
-
-    IEnumerator Cooldown(float p_time, string p_TODO)
-    {
-        yield return new WaitForSeconds(p_time);
-        SendMessage(p_TODO);
     }
     
-    IEnumerator HealthTimer()
-    {
-        for (; m_healthTimer != HEALTH_COOLDOWN; m_healthTimer++)
-        {
-            yield return new WaitForSeconds(1);
-        }
-        m_isHealing = true;
-        yield return null;
-    }
-
-
     // Collision handling
-
-    void OnTriggerStay2D(Collider2D objHit)
-  {
-      // If not a player, the orc will collide with it (trigger false)
-      if (objHit.tag == "Player")
-      {
-          if (!m_hasAttacked)
-          {
-              m_hasAttacked = true;
-              objHit.GetComponent<Player>().TakesDamage(DAMAGE_OUTPUT);
-              StartCoroutine(Cooldown(1f, "AttackCDComplete"));
-          }
-            
-          
-      }
-      else
-      {
-          m_collider.isTrigger = false;
-      }
-  }
   
   void OnCollisionEnter2D(Collision2D objHit)
   {
      // If objHit is a player, the orc will not collide with it (trigger true)
-     if (objHit.gameObject.tag == "Player")
-     {
-         m_collider.isTrigger = true;
-     }
+      if (objHit.gameObject.tag == "Player")
+      {
+          if (!m_hasAttacked)
+          {
+              m_hasAttacked = true;
+              objHit.gameObject.GetComponent<Player>().TakesDamage(DAMAGE_OUTPUT);
+          }
+      }
   }
 }

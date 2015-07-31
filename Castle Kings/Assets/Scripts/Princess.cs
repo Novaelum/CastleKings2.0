@@ -27,6 +27,7 @@ public class Princess : MonoBehaviour {
 
     public void RespawnAt(Vector3 p_pos)
     {
+        transform.position = p_pos;
         GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
         GetComponent<BoxCollider2D>().enabled = true;
     }

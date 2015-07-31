@@ -10,7 +10,7 @@ public class Player : Character, IPickUpper {
     private const float SPEED_MAXIMUM = 0.1f;
     private const float SPEED_DEFAULT = 0.05f;
     private const float SPEED_MINIMUM = 0.025f;
-    public float SPEED_DASH = 4f;
+    private float SPEED_DASH = 2f;
     [HideInInspector] public GameMaster.Teams m_team;
 
     // Stats
@@ -41,6 +41,7 @@ public class Player : Character, IPickUpper {
     bool m_isDashing;
     bool m_carryPrincess;
     bool m_isImmune;
+    bool m_isPowerUpActive;
 
     // Variables
     private float m_speed;
@@ -49,6 +50,14 @@ public class Player : Character, IPickUpper {
     private int m_attackType;
     PowerUps.PowerUpsType m_cPowerUp;
     [HideInInspector] public int m_ID;
+
+    // Timer
+    private float m_powerUpCD;
+    private const float TIMER_IRONSTORM = 1f;
+    private const float TIMER_BOMB = 1f;
+    private const float TIMER_DOUBLE_SPEED = 5f;
+
+    private float m_powerUpTimer;
 
     // Getters
     public int GetHealth()              { return m_health; }
@@ -63,15 +72,25 @@ public class Player : Character, IPickUpper {
         m_sprRen = GetComponent<SpriteRenderer>();
         m_particles = GetComponent<ParticleSystem>();
         m_team = m_owner.m_team;
+        m_carryPrincess = false;
 
         Spawn();
 	}
 
     private void Spawn()
     {
+        if (m_carryPrincess)
+        {
+            m_carryPrincess = false;
+            Princess prin = (Princess)GameObject.FindObjectOfType(typeof(Princess));
+            prin.RespawnAt(transform.position);
+        }
+            
+
+        m_powerUpCD = 0;
         m_isMoving = false;
+        m_powerUpTimer = 0;
         m_isAttacking = false;
-        m_carryPrincess = false;
 
         m_currentSide = Sides.FRONT;
         m_lastSide = Sides.FRONT;
@@ -94,12 +113,18 @@ public class Player : Character, IPickUpper {
         m_isImmune = true;
         yield return new WaitForSeconds(3f);
         m_isImmune = false;
-        Debug.Log("Back to life bitches!");
         yield return null;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        CheckSideChange();
+        if (m_isPowerUpActive)
+            PowerUpActive();
+	}
+
+    private void CheckSideChange()
+    {
         if (m_currentSide != m_lastSide)
         {
             m_lastSide = m_currentSide;
@@ -110,7 +135,40 @@ public class Player : Character, IPickUpper {
             if (m_mana != 100)
                 m_mana = m_mana < 100 ? m_mana += 3 : 100;
         }
-	}
+    }
+
+    private void PowerUpActive()
+    {
+        m_powerUpTimer += Time.deltaTime;
+        if (m_powerUpTimer >= m_powerUpCD)
+        {
+            switch (m_cPowerUp)
+            {
+                // IronStorm
+                case (PowerUps.PowerUpsType.IRONSTORM):
+                    AttackEnded();
+                    break;
+                // Double Speed 
+                case (PowerUps.PowerUpsType.DOUBLE_SPEED):
+                    if (!m_carryPrincess)
+                        m_speed = SPEED_DEFAULT;
+                    else
+                        m_speed = SPEED_MINIMUM;
+                    break;
+                // Bomber man
+                case (PowerUps.PowerUpsType.BOMBER_MAN):
+                    AttackEnded();
+                    break;
+                // Castle King
+                //  case (PowerUps.PowerUpsType.CASTLE_KING):
+                //      break;
+            }
+            m_cPowerUp = PowerUps.PowerUpsType.NONE;
+            m_powerUpTimer = 0;
+            m_attackType = ATTACK_DEFAULT;
+            m_isPowerUpActive = false;
+        }
+    }
 
     // Init the corrent walking animation or idle (frame 0) base on the currentSide
     private void SetAnimations(string p_forBack, string p_forRight, string p_forFront, string p_forLeft) {
@@ -165,16 +223,19 @@ public class Player : Character, IPickUpper {
         }
 
         Vector2 moveDirection = new Vector2(p_X, p_Y);
-        if (p_speed == 0) {
+        if (p_speed == 0)
+        {
             moveDirection *= m_speed;
             m_rbody2D.transform.Translate(moveDirection);
         }
         else
         {
-            transform.position = Vector2.MoveTowards(transform.position, moveDirection, Time.deltaTime * p_speed);
-           // moveDirection *= p_speed;
-           // m_rbody2D.AddForce(moveDirection, ForceMode2D.Impulse);
-            StartCoroutine(WaitForAndDo(1f, "DashEnded"));
+            // TODO: Find a way to check for walls to avoid teleporting over
+            m_mana -= MANACOST_DASH;
+            m_isDashing = true;
+            moveDirection *= p_speed;
+            m_rbody2D.transform.Translate(moveDirection);
+            StartCoroutine(WaitForAndDo(0.1f, "DashEnded"));
         }
     }
 
@@ -197,8 +258,9 @@ public class Player : Character, IPickUpper {
     public void UsePowerUp()
     {
         Debug.Log(m_cPowerUp.ToString());
-        if (m_cPowerUp != PowerUps.PowerUpsType.NONE)
+        if (m_cPowerUp != PowerUps.PowerUpsType.NONE && !m_isPowerUpActive)
         {
+            m_isPowerUpActive = true;
             switch (m_cPowerUp)
             {
                 case(PowerUps.PowerUpsType.IRONSTORM):
@@ -219,42 +281,44 @@ public class Player : Character, IPickUpper {
         }
     }
 
+    // Power Ups
+    // IronStorm
     private void IronStorm()
     {
+        m_powerUpCD = TIMER_IRONSTORM;
         m_attackType = ATTACK_IRONSTORM;
         m_animator.Play("IronStorm", -1, 0);
         m_isAttacking = true;
-        StartCoroutine(WaitForAndDo(1f, "IronStormDone"));
     }
 
+    // Double Speed
     private void DoubleSpeed()
     {
-
+        m_powerUpCD = TIMER_DOUBLE_SPEED;
+        if (!m_carryPrincess)
+            m_speed = SPEED_MAXIMUM;
+        else
+            m_speed = SPEED_DEFAULT;
     }
 
+    // BomberMan
     private void BomberMan()
     {
-
+        m_powerUpCD = TIMER_BOMB;
+        m_attackType = ATTACK_BOMB;
+        m_animator.Play("Bomb", -1, 0);
     }
 
-    private void CastleKing()
-    {
-
-    }
-
-    private void IronStormDone()
-    {
-        AttackEnded();
-        m_cPowerUp = PowerUps.PowerUpsType.NONE;
-        m_attackType = ATTACK_DEFAULT;
-    }
+    // CastleKing
+    // private void CastleKing()
+    // {
+    // 
+    // }
 
     public void Dash(float p_X, float p_Y)
     {
         if (m_mana >= MANACOST_DASH && !m_isDashing && !m_isAttacking)
         {
-           // m_mana -= MANACOST_DASH;
-            m_isDashing = true;
             // Check if the player is moving or not
             // p_X && p_Y != 0 (Player is moving)
             if (p_X > 0 && p_Y > 0)
@@ -315,7 +379,7 @@ public class Player : Character, IPickUpper {
         if (!m_isImmune)
         {
             m_health -= p_damage;
-           // StartCoroutine(Attacked());
+            StartCoroutine(Attacked());
            // Debug.Log("Hey!" + m_health);
             if (m_health <= 0)
             {
@@ -358,5 +422,10 @@ public class Player : Character, IPickUpper {
     {
         m_cPowerUp = p_type;
         Debug.Log(m_cPowerUp.ToString());
+    }
+
+    void OnEnterCollision2D(Collision2D objHit)
+    {
+        Debug.Log((objHit.gameObject.tag.ToString()));
     }
 }
