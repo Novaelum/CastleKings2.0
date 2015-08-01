@@ -22,12 +22,6 @@ public class PowerUpPlatform : MonoBehaviour {
 
     public void SetTimer()
     {
-        StartCoroutine(WaitForAndDo(Random.Range(6, 12), "SpawnPU"));
-    }
-
-    IEnumerator WaitForAndDo(float p_time, string p_TODO)
-    {
-        yield return new WaitForSeconds(p_time);
-        SendMessage(p_TODO);
+        Invoke("SpawnPU", Random.Range(6, 12));
     }
 }

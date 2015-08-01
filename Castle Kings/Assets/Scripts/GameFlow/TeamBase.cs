@@ -8,13 +8,18 @@ public class TeamBase : MonoBehaviour {
     const int PLAYER_KILLED = 100;
     const int ENEMY_KILLED = 25;
 
-    const int VICTORY_COUNT = 3;
-
     private int m_princessSaved;
 
-    public GameMaster.Teams m_team;
+    // Sound FX
+    public AudioSource m_scoreFX;
 
-    [HideInInspector] public int m_score;
+    public GameMaster.Teams m_team;
+    private int m_score;
+
+    public int GetScore()           { return m_score; }
+    public int GetPrincessSaved()   { return m_princessSaved; }
+
+    
     
 	// Use this for initialization
 	void Start () {
@@ -54,15 +59,8 @@ public class TeamBase : MonoBehaviour {
                 plHit.SendMessage("Scored");
                 Princess prin = (Princess)GameObject.FindObjectOfType(typeof(Princess));
                 prin.Reset();
-                CheckVictory();
+                m_scoreFX.Play();
             }    
         }
     }
-
-    private void CheckVictory() {
-        if (m_princessSaved == VICTORY_COUNT) {
-            Debug.Log("Victory for " + m_team.ToString() + " team!");
-        }
-    }
-	
 }

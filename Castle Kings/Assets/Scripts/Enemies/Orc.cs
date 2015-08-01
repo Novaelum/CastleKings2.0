@@ -8,9 +8,12 @@ public class Orc : Enemy {
     Sides m_currentSide;
     Sides m_lastSide;
 
+    // Components Refs
     private TargetInfos[] m_targetsList = new TargetInfos[GameMaster.MAX_PLAYERS];
     private Animator m_animator;
-    private Collider2D m_collider;
+
+    // Sound FX
+    public AudioSource m_hitFX;
 
     private float m_speed;
     private bool m_isAttacking;
@@ -37,7 +40,6 @@ public class Orc : Enemy {
         m_lastSide = Sides.FRONT;
         
         m_animator = GetComponent<Animator>();
-        m_collider = GetComponent<Collider2D>();
 
         m_health = 100;
         m_speed = 1.5f;
@@ -308,6 +310,8 @@ public class Orc : Enemy {
 
     override public void Damaged(int p_damage, GameMaster.Teams p_attackerTeam)
     {
+        m_hitFX.Play();
+
         m_healthTimer = 0;
         if (m_isHealing) {
             m_isHealing = false;

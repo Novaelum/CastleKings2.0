@@ -26,14 +26,16 @@ public class Player : Character, IPickUpper {
     private const int ATTACK_IRONSTORM = 2;
 
     // Components
-    Rigidbody2D m_rbody2D;
-    Animator m_animator;
-    SpriteRenderer m_sprRen;
-    ParticleSystem m_particles;
+    private Rigidbody2D m_rbody2D;
+    private Animator m_animator;
+    private ParticleSystem m_particles;
+   
+    // SoundFX
+    public AudioSource m_hitFX;
 
     // Sides
-    Sides m_currentSide;
-    Sides m_lastSide;
+    private Sides m_currentSide;
+    private Sides m_lastSide;
 
     // States
     private bool m_isMoving; // Whether or not movements keys are active
@@ -50,7 +52,6 @@ public class Player : Character, IPickUpper {
     private int m_health;
     private int m_attackType;
     PowerUps.PowerUpsType m_cPowerUp;
-    [HideInInspector] public int m_ID;
 
     // Timer
     private float m_powerUpCD;
@@ -73,7 +74,6 @@ public class Player : Character, IPickUpper {
 	void Start () {
         m_animator = GetComponent<Animator>();
         m_rbody2D = GetComponent<Rigidbody2D>();
-        m_sprRen = GetComponent<SpriteRenderer>();
         m_particles = GetComponent<ParticleSystem>();
         m_team = m_owner.m_team;
         m_carryPrincess = false;
@@ -109,7 +109,6 @@ public class Player : Character, IPickUpper {
         m_mana = MAX_MANA;
         m_attackType = ATTACK_DEFAULT;
 
-        Debug.Log("SpawnRoutine for " + m_team.ToString());
         StartCoroutine(SpawnRoutine());
     }
 
@@ -278,7 +277,6 @@ public class Player : Character, IPickUpper {
 
     public void UsePowerUp()
     {
-        Debug.Log(m_cPowerUp.ToString());
         if (m_cPowerUp != PowerUps.PowerUpsType.NONE && !m_isPowerUpActive)
         {
             m_isPowerUpActive = true;
@@ -370,7 +368,6 @@ public class Player : Character, IPickUpper {
                 }
             }
         }
-        Debug.Log(m_mana);
     }
 
     private void AttackEnded()
@@ -396,9 +393,9 @@ public class Player : Character, IPickUpper {
     {
         if (!m_isImmune)
         {
+            m_hitFX.Play();
             m_health -= p_damage;
             StartCoroutine(Attacked());
-           // Debug.Log("Hey!" + m_health);
             if (m_health <= 0)
             {
                 Killed();
@@ -410,7 +407,6 @@ public class Player : Character, IPickUpper {
     {
         m_carryPrincess = true;
         m_speed = SPEED_MINIMUM;
-        Debug.Log("I shall bring you to safety my dear!");
         m_particles.Play();
     }
 
@@ -433,11 +429,5 @@ public class Player : Character, IPickUpper {
     public void OnPickUp(PowerUps.PowerUpsType p_type)
     {
         m_cPowerUp = p_type;
-        Debug.Log(m_cPowerUp.ToString());
-    }
-
-    void OnEnterCollision2D(Collision2D objHit)
-    {
-        Debug.Log((objHit.gameObject.tag.ToString()));
     }
 }

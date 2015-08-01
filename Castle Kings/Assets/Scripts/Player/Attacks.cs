@@ -5,7 +5,11 @@ public class Attacks : MonoBehaviour {
 
     public Player m_Owner;
 
-    private const int DEFAULT_DAMAGE = 30;
+    // Sound FX
+    public AudioSource m_attackFX;
+    public AudioSource m_bombFX;
+
+    private const int DEFAULT_DAMAGE = 50;
     private const int IRONSTORM_DAMAGE = 100;
     private const int BOMB_DAMAGE = 150;
 
@@ -25,12 +29,15 @@ public class Attacks : MonoBehaviour {
         switch (attackType)
         {
             case(0):
+                m_attackFX.Play();
                 Attack(objHit, DEFAULT_DAMAGE);
                 break;
             case(1):
+                m_bombFX.Play();
                 Attack(objHit, BOMB_DAMAGE);
                 break;
             case(2):
+                m_attackFX.Play();
                 Attack(objHit, IRONSTORM_DAMAGE);
                 break;
         }
@@ -39,6 +46,7 @@ public class Attacks : MonoBehaviour {
 
     void Attack(Collider2D p_objHit, int p_damage)
     {
+        
         if (p_objHit.gameObject.tag == "Player")
         {
             // Player to player damage always one shot kill

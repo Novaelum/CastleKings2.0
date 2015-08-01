@@ -7,6 +7,7 @@ public class GameMaster : MonoBehaviour {
     public static KillScore g_scoreDelegate = new KillScore();
 
     public const int MAX_PLAYERS = 8;
+    const int VICTORY_COUNT = 3;
 
     public enum Teams
     {
@@ -20,6 +21,9 @@ public class GameMaster : MonoBehaviour {
     public Player m_P1;
     public Player m_P2;
 
+    public TeamBase team1;
+    public TeamBase team2;
+
 	// Use this for initialization
 	void Start () {
         m_gameTimer = 0;
@@ -29,6 +33,7 @@ public class GameMaster : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckControls();
+        CheckVictory();
 	}
 
     void CheckControls()
@@ -86,9 +91,13 @@ public class GameMaster : MonoBehaviour {
             // Debug.Log("PosX" + InputManager.Devices[p_device].RightStickX.Value + " PosY " + InputManager.Devices[p_device].RightStickY.Value);
             p_player.SetSide((Mathf.Atan2(InputManager.Devices[p_device].RightStickX.Value, InputManager.Devices[p_device].RightStickY.Value)) * 180 / Mathf.PI);
         }
+
+        // ========================
+        // Back
+        // ------------------------
         if (InputManager.Devices[p_device].GetControl(InputControlType.Back).WasPressed)
         {
-
+            
         }
 
 
@@ -127,6 +136,19 @@ public class GameMaster : MonoBehaviour {
         if (InputManager.Devices[p_device].Action3.WasPressed)
         {
             p_player.Attack();
+        }
+    }
+
+    private void CheckVictory()
+    {
+        // TODO: Victory screen
+
+        if (team1.GetPrincessSaved() == VICTORY_COUNT || team2.GetPrincessSaved() == VICTORY_COUNT)
+        {
+            string victoryMessage = (team1.GetScore() > team2.GetScore()) ? (Localizater.GetTranslationFor("Victory") + team1.m_team.ToString() + Localizater.GetTranslationFor("TeamWith") + team1.GetScore() + Localizater.GetTranslationFor("points"))
+                                                                          : (Localizater.GetTranslationFor("Victory") + team2.m_team.ToString() + Localizater.GetTranslationFor("TeamWith") + team2.GetScore() + Localizater.GetTranslationFor("points"));
+            Debug.Log(victoryMessage);
+            Application.LoadLevel(Application.loadedLevel);
         }
     }
 
